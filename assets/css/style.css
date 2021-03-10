@@ -60,3 +60,16 @@ main p {
 .button:hover {
     background-color: var(--secondary-color);
 }
+
+.btn-ans {
+    height: 50px;
+    width: 250px;
+    background-color: var(--primary-color);
+    margin: 5px;
+    color: var(--tertiary-color);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    padding: 0 15px;
+    border-radius: 10px;
+}
