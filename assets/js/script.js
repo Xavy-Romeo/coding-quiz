@@ -17,6 +17,7 @@ var questions = [
 
     var question = document.querySelector('#question');
         question.textContent = questions[0].q;
+        question.className = 'question-style';
 
     var divBtn = document.createElement('div');
         divBtn.className = 'div-Btn';
