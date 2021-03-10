@@ -45,9 +45,6 @@ main {
 }
 
 .question-style {
-    font-size: 35px;
-    font-weight: bolder;
-    margin: 10px;
     width: 650px;
     display: flex;
     justify-content: flex-start;
