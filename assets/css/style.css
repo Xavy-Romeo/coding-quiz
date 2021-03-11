@@ -91,3 +91,24 @@ main p {
     flex-direction: column;
     width: 650px;
 }
+
+.result {
+    width: 350px;
+    font-size: 22px;
+    text-align: left;
+    padding: 0;
+}
+
+.initials-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 0 220px 0;
+}
+
+.initials-div input {
+    height: 45px;
+    width: 250px;
+    font-size: 36px;
+    padding: 20px;
+}
