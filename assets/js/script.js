@@ -4,6 +4,7 @@ var ansBtn1;
 var ansBtn2; 
 var ansBtn3; 
 var ansBtn4;
+var timeInterval;
 
 var btn1 = '';
 var btn2 = '';
@@ -11,7 +12,6 @@ var btn3 = '';
 var btn4 = ''; 
 var initialsInput = '';
 
-var timer = 75;
 var finalScore = 0;
 var index = 0;
 
@@ -178,20 +178,59 @@ var score = function() {
     document.getElementById('initials').appendChild(initialsInput);
     document.getElementById('initials').appendChild(initialsButton);
 
+    // Stop countdown
+    clearInterval(timeInterval);
+
+    // Remove countdown
+    timerDiv.remove();
+
     // Save score to localStorage on button click
     initialsButton.addEventListener('click', saveScore);
-
 };
 
 var saveScore = function() {
     // Save score to localStorage
     initialsInput = document.getElementById('input').value;
     localStorage.setItem(initialsInput, finalScore);
+    
+    initialsInput = '';
 };
 
 var startTimer = function(){
-    console.log('timer');
- };
+    time = 75
+    
+    // Create container for Timer Countdown and append to header
+    var timerDiv = document.createElement('div');
+        timerDiv.id = 'timerDiv'
+    document.getElementById('header').appendChild(timerDiv);
+
+    // Create <p> 'Time Remaining' 
+    var timerText = document.createElement('p');
+        timerText.className = 'timer';
+        timerText.textContent = 'Time Remaining: ';
+    
+    // Create <span> display countdown
+    var timerCount = document.createElement('span');
+        timerCount.className = 'timer';
+        timerCount.textContent = time;
+    
+    // Append <p> and <span> to timerDiv
+    document.getElementById('timerDiv').appendChild(timerText);
+    document.getElementById('timerDiv').appendChild(timerCount);
+
+    // Set time interval to run countdown every second and stop quiz at time = 0
+    timeInterval = setInterval(function(){
+        if (time > 0) {
+            timerCount.textContent = (time-1);
+            time--;
+        }
+        else {
+            clearInterval(timeInterval);
+            alert('Time is Up!!!');
+            score();
+        } 
+    }, 1000);
+};
 
 // Start Quiz on button click
 buttonStart.addEventListener('click', startQuiz);
