@@ -298,12 +298,17 @@ var saveScore = function() {
 
     // Push player results into highScore array
     highScore.push(scoreResult);
-    
+       
     // Save player results to localStorage
     localStorage.setItem('highScores', JSON.stringify(highScore));
 
-    results = highScore; 
-      
+    // Sort items from 1-5
+    highScore = highScore.sort(function(a,b){
+       return b.score-a.score;
+    });
+
+    results = highScore;
+          
     scorePage2();
 };
 
