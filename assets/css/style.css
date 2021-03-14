@@ -52,7 +52,7 @@ main {
     margin: 10px;
 }
 
-.question-style {
+.score-style {
     width: 650px;
     display: flex;
     justify-content: flex-start;
@@ -76,7 +76,7 @@ main p {
     color: var(--tertiary-color)
 }
 
-.button:hover {
+.button:hover, .score-button:hover {
     background-color: var(--secondary-color);
 }
 
@@ -119,4 +119,62 @@ main p {
     width: 250px;
     font-size: 36px;
     padding: 20px;
+}
+
+.answer { 
+   color: rgba(0,0,0,0.5);
+   font-size: 30px;
+   margin: 0 0 0 -440px;
+   padding: 20px 0 0 0; 
+}
+
+.temp-div {
+    margin: -27px 0;
+}
+
+.view-scores {
+    font-size: 32px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.view-scores-div{
+    background-color: rgb(133, 130, 130);
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 0 -250px;
+}
+
+.high-scores {
+    text-align: left;
+    padding: 10px;
+    height: 50px;
+    font-size: 32px;
+    margin: 5px 0;
+}
+
+.high-scores-1 {
+    max-width: 75px;
+}
+
+.high-scores-2 {
+    width: 200px
+}
+
+.score-buttons-div {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0;
+}
+
+.score-button {
+    background-color: var(--primary-color);
+    margin: 0 10px 0 0;
+    color: var(--tertiary-color);
+    height: 40px;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 0 10px;
 }
