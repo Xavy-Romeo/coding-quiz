@@ -40,6 +40,7 @@ var questions = [
     
     // Disable: View Scores while quiz in session
     viewScore.addEventListener('mouseenter', disabled);
+    viewScore.removeEventListener('click', scorePage);
     
     // Restyle question
     question.textContent = questions[index].q;
@@ -101,15 +102,23 @@ var ansBtnClick = function (){
 
 // answers(1-4) functions add to score when correct and subtract time when wrong
 var answers1 = function(){
-    if (time > 10) {
-        time = time - 10;
-        wrong();
-        questionsArr();
-    }
-    else{
-        wrong();
-        timeOver();
-    }
+    // if (index === 0 || index === 1 || index === 2 || index === 3){
+        if (time > 10) {
+            time = time - 10;
+            wrong();
+            questionsArr();
+        }
+        else {
+            timeOver();
+        }
+    // }
+    // else {
+    //     if (time > 10) {
+    //         time = time - 10;
+    //         wrong();
+    //         finalScore = finalScore + time;
+    //     }
+    // }   
 };
 
 var answers2 = function(){
@@ -126,7 +135,7 @@ var answers2 = function(){
 var answers3 = function(){
     
     if (index === 0 || index === 1 || index === 3){
-        finalScore++;
+        finalScore = finalScore + 100;
         correct();
     }
     else {
@@ -146,7 +155,7 @@ var answers3 = function(){
 var answers4 = function(){
     
     if (index === 2 || index === 4) {
-        finalScore++;
+        finalScore = finalScore + 100;
         correct();
     }
     else {
@@ -232,7 +241,7 @@ var score = function() {
     // Present final score
      result = document.createElement('p');
         result.className = 'result';
-        result.textContent = "Your final score is " + finalScore + ".";
+        result.textContent = "Your final score is " + (finalScore + time) + ".";
     
     document.getElementById('div-button').appendChild(result);
 
@@ -283,7 +292,7 @@ var saveScore = function() {
             
     // Make object with values for score and initials
     var scoreResult = {
-        score: finalScore,
+        score: finalScore + time,
         initials: initialsInput,
     }
 
@@ -308,6 +317,7 @@ var scorePage = function() {
 };
 
 var scorePage2 = function() {
+    viewScore.remove();
     result.remove();
     initials.remove();
 
@@ -483,7 +493,6 @@ var disabled = function() {
     var timeout = setTimeout(function(){
         viewScore.textContent = 'View High Scores';
     }, 2000);
-    viewScore.removeEventListener('click', scorePage);
 };
 
 var enterInitials = function() {
